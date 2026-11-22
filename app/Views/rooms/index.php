@@ -2,7 +2,16 @@
 
 <?= $this->section('content') ?>
 
-<h1 class="mb-4">Zoznam učební</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Zoznam učební</h1>
+    <a href="/rooms/new" class="btn btn-primary">Pridať učebňu</a>
+</div>
+
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+        <?= esc(session()->getFlashdata('success')) ?>
+    </div>
+<?php endif ?>
 
 <?php if (empty($rooms)): ?>
     <div class="alert alert-info">
