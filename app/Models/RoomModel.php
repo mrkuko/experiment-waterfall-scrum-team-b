@@ -8,9 +8,9 @@ class RoomModel extends Model
 {
     // hodnota v DB => text, ktorý vidí používateľ
     public const TYPES = [
-        'pocitacova'  => 'počítačová',
-        'seminarna'   => 'seminárna',
-        'prednaskova' => 'prednášková',
+        'pocitacova'  => 'Počítačová miestnosť',
+        'seminarna'   => 'Seminárna miestnosť',
+        'prednaskova' => 'Prednášková miestnosť',
     ];
 
     protected $table          = 'rooms';
@@ -47,7 +47,7 @@ class RoomModel extends Model
         ],
         'type' => [
             'required' => 'Typ je povinný.',
-            'in_list'  => 'Typ musí byť počítačová, seminárna alebo prednášková.',
+            'in_list'  => 'Typ musí byť počítačová, seminárna alebo prednášková miestnosť.',
         ],
     ];
 
