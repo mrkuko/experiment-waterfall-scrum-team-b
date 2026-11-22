@@ -6,6 +6,17 @@ use App\Models\RoomModel;
 
 class Rooms extends BaseController
 {
+    // US-01: zoznam učební (M1-01)
+    public function index()
+    {
+        $model = new RoomModel();
+
+        return view('rooms/index', [
+            'title' => 'Zoznam učební',
+            'rooms' => $model->orderBy('code', 'ASC')->findAll(),
+        ]);
+    }
+
     // Detail učebne (US-05)
     public function show($id = null)
     {
