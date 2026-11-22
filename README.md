@@ -118,6 +118,18 @@ php spark migrate
 
 Databázové tabuľky sa nemajú medzi členmi tímu prenášať iba manuálnym exportom z phpMyAdmin. Zmeny databázovej štruktúry majú byť uložené v Git repozitári prostredníctvom migrácií.
 
+### Tabuľka učební a testovacie údaje (M1)
+Tabuľka `rooms` sa vytvára migráciou a plní seederom. Oba príkazy sa spúšťajú v koreňovom priečinku projektu:
+
+php spark migrate
+php spark db:seed RoomSeeder
+
+- `migrate` vytvorí tabuľku `rooms`.
+- `db:seed RoomSeeder` vloží tri testovacie učebne (U101, U102, U103). Seeder je možné spustiť opakovane, existujúce kódy sa preskočia.
+- `migrate:rollback` tabuľku zmaže, následným `migrate` sa vytvorí nanovo.
+
+Tabuľka používa collation `utf8mb4_uca1400_as_ci`, na ktorú je potrebná MariaDB 10.10 alebo novšia. Pri staršej verzii migrácia skončí chybou `Unknown collation`. Verzia sa zistí príkazom `SELECT VERSION();`.
+
 ### Git workflow
 Každá funkčná požiadavka má byť implementovaná v samostatnej branche.
 
